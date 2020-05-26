@@ -1,0 +1,41 @@
+version: '3'
+
+services:
+  database1:
+    build:
+       context: ./database/
+    hostname: database1
+    container_name: database1
+    ports:
+     - "5432:5432"
+    environment:
+     - POSTGRES_USER=chat
+     - POSTGRES_PASSWORD=chat1234
+     - POSTGRES_DB=chatapp
+    volumes:
+     - db-data:/var/lib/postgresql/data
+
+  chat:
+    build:
+       context: .
+    hostname: chatapplication
+    container_name: chatapplication
+    ports:
+     - "8000:8000"
+    depends_on:
+     - database1
+
+  nginx:
+    image: 760496128264.dkr.ecr.ap-south-1.amazonaws.com/chatapp:nginx
+    hostname: nginx
+    container_name: nginx
+    ports:
+     - "80:80"
+    depends_on:
+     - chat
+
+volumes:
+  db-data:
+
+
+
