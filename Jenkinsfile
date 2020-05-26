@@ -1,10 +1,6 @@
 pipeline {
 	agent any
 	stages {
-		stage('Clone Repo') {
-			checkout scm
-		}
-
 		stage('Build Image') {
 			steps {
 				sh ''' #! /bin/bash
