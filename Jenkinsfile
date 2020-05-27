@@ -4,8 +4,15 @@ pipeline {
 		stage('Build Image') {
 			steps {
 				sh ''' #! /bin/bash
-				echo "hello"
+				ssh -i /var/lib/jenkins/.ssh/id_rsa ubuntu@13.126.129.118 '
+				sudo rm -rf /home/ubuntu/chatApp12
+				'
+				scp -r /var/lib/jenkins/workspace/chatApp13 ubuntu@13.126.129.118:/home/ubuntu
+
+				ssh -i /var/lib/jenkins/.ssh/id_rsa ubuntu@13.126.129.118 '
+				cd /home/ubuntu/chatApp13
 				docker-compose up -d
+				'
 				'''
 			}
 		}
