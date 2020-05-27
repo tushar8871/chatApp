@@ -106,7 +106,7 @@ DATABASES = {
         'NAME': 'chatApp',
         'USER': 'postgres',
         'PASSWORD': '*admin123',
-        'HOST': 'database1',
+        'HOST': 'mychatapp.cm0qqx04d55a.ap-south-1.rds.amazonaws.com',
         'PORT': '5432',
     }
 }
