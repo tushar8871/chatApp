@@ -3,11 +3,11 @@ pipeline {
 	stages {
 		stage('Clone Repository') {
 			steps {
-            			sh ''' #! /bin/bash
-            			ssh -i /var/lib/jenkins/.ssh/id_rsa root@13.126.129.118 '
-            			sudo rm -rf chatApp13/
-            			'
-            			scp -r /var/lib/jenkins/workspace/chatApp13 root@13.126.129.118:
+				sh ''' #! /bin/bash
+				ssh -i /var/lib/jenkins/.ssh/id_rsa root@13.126.129.118 '
+				sudo rm -rf chatApp13/
+				'
+				scp -r /var/lib/jenkins/workspace/chatApp13 root@13.126.129.118:
 				'''
 			}
 		}
