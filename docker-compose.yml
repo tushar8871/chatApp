@@ -9,11 +9,9 @@ services:
     ports:
      - "5432:5432"
     environment:
-     - POSTGRES_USER=chat
-     - POSTGRES_PASSWORD=chat1234
-     - POSTGRES_DB=chatapp
-    volumes:
-     - db-data:/var/lib/postgresql/data
+     - POSTGRES_USER=postgres
+     - POSTGRES_PASSWORD=*admin123
+     - POSTGRES_DB=chatApp
     restart: always
 
   chat:
@@ -36,9 +34,3 @@ services:
     depends_on:
      - chat
     restart: always
-
-volumes:
-  db-data:
-
-
-
