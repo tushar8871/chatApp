@@ -31,10 +31,15 @@ pipeline {
 			}
 		}
 		stage('Push Image') {
-			steps {
-				 withDockerRegistry([url: "https://760496128264.dkr.ecr.ap-south-1.amazonaws.com",credentialsId: "ecr:ap-south-1:ecr"]) {
-				  sh "docker push 760496128264.dkr.ecr.ap-south-1.amazonaws.com/chatapp:chat"
-			}
+			steps { 
+				sh ''' #! /bin/bash
+				ssh -i /var/lib/jenkins/.ssh/id_rsa root@13.126.129.118 '
+				withDockerRegistry([url: "https://760496128264.dkr.ecr.ap-south-1.amazonaws.com",credentialsId: "ecr:ap-south-1:ecr"]) {
+					 docker tag chatApp13_chat:latest 760496128264.dkr.ecr.ap-south-1.amazonaws.com/chatapp:chat
+					 docker push 760496128264.dkr.ecr.ap-south-1.amazonaws.com/chatapp:chat
+				}
+				'
+				'''
 			}
 		}
 
