@@ -20,17 +20,20 @@ services:
     hostname: chatapplication
     container_name: chatapplication
     ports:
-     - "8000:8000"
+     - "80:8000"
     depends_on:
      - database1
     restart: always
 
   nginx:
-    image: 760496128264.dkr.ecr.ap-south-1.amazonaws.com/chatapp:nginx
+    build:
+       context: ./nginx/
     hostname: nginx
     container_name: nginx
     ports:
-     - "80:80"
+     - "8000:80"
     depends_on:
      - chat
     restart: always
+
+
