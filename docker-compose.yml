@@ -13,7 +13,7 @@ services:
      - POSTGRES_PASSWORD=chat1234
      - POSTGRES_DB=chatapp
     volumes:
-     - db-data:/var/lib/postgresql/data
+     - db_data:/var/lib/postgresql/data/
     restart: always
 
   chat:
@@ -38,7 +38,7 @@ services:
     restart: always
 
 volumes:
-  db-data:
+  db_data:
 
 
 
