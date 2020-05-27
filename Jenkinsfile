@@ -4,6 +4,7 @@ pipeline {
 		stage('Build Image') {
 			steps {
 				sh ''' #! /bin/bash
+				echo "hello"
 				docker-compose up -d
 				'''
 			}
