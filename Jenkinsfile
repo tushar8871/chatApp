@@ -30,6 +30,14 @@ pipeline {
 				'''
 			}
 		}
+		stage('Push Image') {
+			steps {
+				 withDockerRegistry([url: "https://760496128264.dkr.ecr.ap-south-1.amazonaws.com/chatapp",credentialsId: "ecr:ap-south-1:ecr"]) {
+				 sh 'docker tag chatApp13_chat 760496128264.dkr.ecr.ap-south-1.amazonaws.com/chatapp:chat'
+            			 sh 'docker push 760496128264.dkr.ecr.ap-south-1.amazonaws.com/chatapp'
+				 }
+			}
+		}
 
 	}
 	post {
