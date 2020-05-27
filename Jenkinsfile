@@ -5,7 +5,7 @@ pipeline {
 			steps {
 				sh ''' #! /bin/bash
 				ssh -i /var/lib/jenkins/.ssh/id_rsa ubuntu@13.126.129.118 '
-				sudo rm -rf /home/ubuntu/chatApp12
+				sudo rm -rf /home/ubuntu/chatApp13
 				'
 				scp -r /var/lib/jenkins/workspace/chatApp13 ubuntu@13.126.129.118:/home/ubuntu
 
