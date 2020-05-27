@@ -16,7 +16,6 @@ pipeline {
 				sh ''' #! /bin/bash
 				ssh -i /var/lib/jenkins/.ssh/id_rsa root@13.126.129.118 '
 				cd chatApp13/
-				$(aws ecr get-login --registry-ids 760496128264 --no-include-email --region ap-south-1)
 				docker-compose down 
 				docker-compose up -d
 				'
