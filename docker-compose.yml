@@ -5,7 +5,7 @@ services:
     build:
        context: ./database/
     volumes:
-      - db_volume:/var/lib
+      - db_volume:/var/lib/postgresql
     hostname: database1
     container_name: database1
     ports:
