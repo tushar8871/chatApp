@@ -4,6 +4,8 @@ services:
   database1:
     build:
        context: ./database/
+    volumes:
+      - db_volume:/var/lib/postgresql/data/
     hostname: database1
     container_name: database1
     ports:
@@ -34,5 +36,6 @@ services:
     depends_on:
      - chat
     restart: always
-
+volumes:
+  db_volume:
 
