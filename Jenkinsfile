@@ -4,17 +4,17 @@ pipeline {
 		stage('Clone Repository') {
 			steps {
 				sh ''' #! /bin/bash
-				ssh -i /var/lib/jenkins/.ssh/id_rsa root@13.126.153.7 '
+				ssh -i /var/lib/jenkins/.ssh/id_rsa root@3.7.68.211 '
 				sudo rm -rf chatApp13/
 				'
-				scp -r /var/lib/jenkins/workspace/chatApp13 root@13.126.153.7:
+				scp -r /var/lib/jenkins/workspace/chatApp13 root@3.7.68.211 '
 				'''
 			}
 		}
 		stage('Build Image') {
 			steps {
 				sh ''' #! /bin/bash
-				ssh -i /var/lib/jenkins/.ssh/id_rsa root@13.126.153.7 '
+				ssh -i /var/lib/jenkins/.ssh/id_rsa root@3.7.68.211 '
 				cd chatApp13/
 				 $(aws ecr get-login --registry-ids 760496128264 --no-include-email --region ap-south-1)
 				#docker-compose down 
@@ -36,7 +36,7 @@ pipeline {
 		stage('Push Image') {
 			steps { 
 				sh ''' #! /bin/bash
-				ssh -i /var/lib/jenkins/.ssh/id_rsa root@13.126.153.7 '
+				ssh -i /var/lib/jenkins/.ssh/id_rsa root@3.7.68.211 '
 				docker tag chatapp13_chat 760496128264.dkr.ecr.ap-south-1.amazonaws.com/chatapp:chatapp13_chat
 				docker push 760496128264.dkr.ecr.ap-south-1.amazonaws.com/chatapp:chatapp13_chat
 				'
