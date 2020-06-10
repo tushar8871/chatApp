@@ -7,7 +7,7 @@ pipeline {
 				ssh -i /var/lib/jenkins/.ssh/id_rsa root@3.7.68.211 '
 				sudo rm -rf chatApp13/
 				'
-				scp -r /var/lib/jenkins/workspace/chatApp13 root@3.7.68.211
+				scp -r /var/lib/jenkins/workspace/chatApp13 root@3.7.68.211:
 				'''
 			}
 		}
