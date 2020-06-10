@@ -20,7 +20,7 @@ pipeline {
 				#docker-compose down 
 				docker stop $(docker ps -a -q)
 				docker rm $(docker ps -a -q)
-				docker rmi $(docker images -q -f dangling=true)
+				docker rmi -f ocker images -q dangling=true)
 				docker-compose up -d
 				'
 				'''
