@@ -20,7 +20,7 @@ pipeline {
 				#docker-compose down 
 				docker stop $(docker ps -a -q)
 				docker rm $(docker ps -a -q)
-				docker rmi -f $(docker images -a -q)
+				docker rmi -f chatapp13_chat:latest
 				docker-compose up -d
 				'
 				'''
