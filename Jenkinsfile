@@ -26,13 +26,6 @@ pipeline {
 				'''
 			}
 		}
-		stage('Deploy') {
-			steps {
-				sh ''' #! /bin/bash
-				echo Deploy Successfull
-				'''
-			}
-		}
 		stage('Push Image') {
 			steps { 
 				sh ''' #! /bin/bash
@@ -40,6 +33,16 @@ pipeline {
 				docker tag chatapp13_chat 760496128264.dkr.ecr.ap-south-1.amazonaws.com/chatapp:chatapp13_chat
 				docker push 760496128264.dkr.ecr.ap-south-1.amazonaws.com/chatapp:chatapp13_chat
 				'
+				'''
+			}
+		}
+		stage('Deploy') {
+			steps {
+				sh ''' #! /bin/bash
+				ssh -i /var/lib/jenkins/.ssh/id_rsa root@3.7.252.181 '
+				kubectl delete $(kubectl get po -o=name | grep chat-deployment)
+				,
+				echo Deploy Successfull
 				'''
 			}
 		}
