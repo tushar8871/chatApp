@@ -20,7 +20,7 @@ pipeline {
 				#docker-compose down 
 				docker stop $(docker ps -a -q)
 				docker rm $(docker ps -a -q)
-				docker rmi -f chatapp13_chat:latest
+				docker rmi -f chatapp13_chat:latest 760496128264.dkr.ecr.ap-south-1.amazonaws.com/chatapp:chatapp13_chat
 				docker-compose up -d
 				'
 				'''
