@@ -41,7 +41,7 @@ pipeline {
 				sh ''' #! /bin/bash
 				ssh -i /var/lib/jenkins/.ssh/id_rsa ubuntu@13.233.255.236 '
 				kubectl delete $(kubectl get po -o=name | grep chat-deployment)
-				,
+				'
 				echo Deploy Successfull
 				'''
 			}
