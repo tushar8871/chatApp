@@ -18,13 +18,13 @@ pipeline {
 				cd chatApp13/
 				$(aws ecr get-login --registry-ids 760496128264 --no-include-email --region ap-south-1)
 				#docker-compose down 
-				#docker stop $(docker ps -a -q)
-				#docker rm $(docker ps -a -q)
-				docker stop chatapplication
-				docker rm chatapplication
+				docker stop $(docker ps -a -q)
+				docker rm $(docker ps -a -q)
 				docker rmi -f chatapp13_chat:latest 760496128264.dkr.ecr.ap-south-1.amazonaws.com/chatapp:chatapp13_chat
-				#docker-compose up -d
-				docker build -t chat .
+				docker-compose up -d
+				#docker stop chatapplication
+				#docker rm chatapplication
+				#docker build -t chat .
 				'
 				'''
 			}
@@ -33,10 +33,10 @@ pipeline {
 			steps { 
 				sh ''' #! /bin/bash
 				ssh -i /var/lib/jenkins/.ssh/id_rsa root@52.66.240.187 '
-				#docker tag chatapp13_chat 760496128264.dkr.ecr.ap-south-1.amazonaws.com/chatapp:chatapp13_chat
-				docker tag chat:latest 760496128264.dkr.ecr.ap-south-1.amazonaws.com/chatapp:chat
-				#docker push 760496128264.dkr.ecr.ap-south-1.amazonaws.com/chatapp:chatapp13_chat
-				docker push 760496128264.dkr.ecr.ap-south-1.amazonaws.com/chatapp:chat
+				docker tag chatapp13_chat 760496128264.dkr.ecr.ap-south-1.amazonaws.com/chatapp:chatapp13_chat
+				docker push 760496128264.dkr.ecr.ap-south-1.amazonaws.com/chatapp:chatapp13_chat
+				#docker tag chat:latest 760496128264.dkr.ecr.ap-south-1.amazonaws.com/chatapp:chat
+				#docker push 760496128264.dkr.ecr.ap-south-1.amazonaws.com/chatapp:chat
 				'
 				'''
 			}
